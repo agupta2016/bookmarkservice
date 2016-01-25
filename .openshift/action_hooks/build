@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# export environment variables
+export JAVA_HOME="/etc/alternatives/java_sdk_1.8.0"
+export PATH=$JAVA_HOME/bin:$PATH
+
+echo "############################################"
+echo "# build projekt with java:"
+java -version
+echo "############################################"
+
+# call our own mvn script with the right settings
+cd $OPENSHIFT_REPO_DIR
+./.openshift/mvn package -s .openshift/settings.xml -DskipTests=true
+mv target/taboo2-*.jar .
+./.openshift/mvn clean -s .openshift/settings.xml

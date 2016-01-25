@@ -1,0 +1,6 @@
+*.iml
+.idea
+.eclipse
+target
+
+data/openshift-users.txt
